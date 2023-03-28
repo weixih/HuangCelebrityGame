@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * The framework for the Celebrity Game project
@@ -39,7 +40,17 @@ public class CelebrityGame {
 	 *         spaces.
 	 */
 	public boolean processGuess(String guess) {
-		return false; // stub
+		guess = guess.toLowerCase().trim();
+		if(guess.equals(gameCelebrity.getAnswer().toLowerCase().trim())){
+			celebGameList.remove(0);
+			if(celebGameList.size() != 0){
+				gameCelebrity = celebGameList.get(0);
+			}else{
+				gameCelebrity = new Celebrity("", "");
+			}
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -48,7 +59,10 @@ public class CelebrityGame {
 	 * play screen.
 	 */
 	public void play() {
-		
+		if(celebGameList.size() > 0 && celebGameList != null){
+			gameCelebrity = celebGameList.get(0);
+			gameWindow.replaceScreen("GAME");
+		}
 	}
 
 	/**
@@ -59,7 +73,8 @@ public class CelebrityGame {
 	 * @param type  What type of celebrity
 	 */
 	public void addCelebrity(String name, String clue, String type) {
-		
+		Celebrity celebrity = new Celebrity(name, clue);
+		celebGameList.add(celebrity);
 	}
 
 	/**
@@ -68,7 +83,10 @@ public class CelebrityGame {
 	 * @return If the supplied Celebrity is valid
 	 */
 	public boolean validateCelebrity(String name) {
-		return false; // stub
+		if(name.length() >= 4){
+			return  true;
+		}
+		return false;
 	}
 
 	/**
@@ -78,7 +96,10 @@ public class CelebrityGame {
 	 * @return If the clue is valid.
 	 */
 	public boolean validateClue(String clue, String type) {
-		return false; // stub
+		if(clue.trim().length() >= 10){
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -87,7 +108,7 @@ public class CelebrityGame {
 	 * @return Remaining number of celebrities
 	 */
 	public int getCelebrityGameSize() {
-		return 0;  // stub
+		return celebGameList.size();
 	}
 
 	/**
@@ -97,6 +118,6 @@ public class CelebrityGame {
 	 * @return The String clue from the current celebrity.
 	 */
 	public String sendClue() {
-		return null; // stub
+		return gameCelebrity.getClue();
 	}
 }
