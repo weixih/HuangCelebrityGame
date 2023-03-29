@@ -240,6 +240,7 @@ public class StartPanel extends JPanel implements ActionListener{
 
     }else if(text.equals("Start Celebrity game")){
      controller.play();
+
     }
 
   }
