@@ -117,7 +117,6 @@ public class StartPanel extends JPanel implements ActionListener{
     setupPanel();
     setupLayout();
     setupListeners();
-
   }
   
   /**
@@ -243,6 +242,13 @@ public class StartPanel extends JPanel implements ActionListener{
 
     }
 
+  }
+
+  public void restart(){
+    startButton.setEnabled(false);
+    celebrityCountLabel.setText(countLabelText + 0);
+    answerField.setText("Type celebrity here (4 letters min)");
+    clueField.setText("Enter celebrity clue here (10 letters min)");
   }
 
 }

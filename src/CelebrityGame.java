@@ -31,6 +31,10 @@ public class CelebrityGame {
 		gameWindow = new CelebrityFrame(this);
 	}
 
+	public void resetList(){
+		celebGameList.clear();
+	}
+
 	/**
 	 * Determines if the supplied guess is correct.
 	 * 
@@ -63,6 +67,11 @@ public class CelebrityGame {
 			gameCelebrity = celebGameList.get(0);
 			gameWindow.replaceScreen("GAME");
 		}
+	}
+
+	public void start(){
+		gameWindow.replaceScreen("START");
+
 	}
 
 	/**

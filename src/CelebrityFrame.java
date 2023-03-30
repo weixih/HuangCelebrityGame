@@ -75,6 +75,9 @@ public class CelebrityFrame extends JFrame {
 			// send the first clue to the screen
 			gamePanel.addClue(controller.sendClue());
 		}
+		if(screen.equals("START")){
+			startPanel.restart();
+		}
 
 		// present the appropriate panel based on the name provided in "screen"
 		// (either "START" or "GAME")
